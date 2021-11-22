@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <title>Crud</title>
+</head>
+<body>
+
+<!--Navbar-->
+<nav th:replace="components/navbar :: nav_bar"></nav>
+
+<!-- Card Libros-->
+<div class="container">
+    <div class="row mt-4">
+        <div class="col-4">
+            <h5>Administrar libros</h5>
+        </div>
+        <div class="col-8 d-flex flex-row-reverse">
+            <a th:href="@{/formulario/libro/0}" class="btn btn-success" style="Height:2.5rem;"> Agregar libros</a>
+        </div>
+    </div>
+    <row>
+        <div class="col-12" style="margin-top: 2rem;">
+            <div class="card-deck">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Titulo</th>
+                        <th scope="col">Edicion</th>
+                        <th scope="col">Cantidad</th>
+                        <!--<th scope="col">Sinopsios</th>-->
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="libro:${libros}" th:classappend="${libro.activo} ? table-success : table-danger">
+                        <td th:text="${libro.id}"></td>
+                        <td th:text="${libro.titulo}"></td>
+                        <td th:text="${libro.edicion}"></td>
+                        <td th:text="${libro.cantidad}"></td>
+                        <td>
+                            <a th:href="@{/formulario/libro/{id}(id=${libro.id})}" class="btn btn-warning">Editar</a>
+                            <a th:if="${libro.activo}" th:href="@{/eliminar/libro/{id}(id=${libro.id})}" class="btn btn-danger">Eliminar</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </row>
+</div>
+</body>
+</html>

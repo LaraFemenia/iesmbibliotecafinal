@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <title>Pagina de errores</title>
+</head>
+<body>
+
+<!--Navbar-->
+<nav th:replace="components/navbar :: nav_bar"></nav>
+
+<!--Msj error-->
+<div class="container" style="display: flex; justify-content: center;">
+    <div class="row">
+        <div class="col">
+            <!-- <div class="alert alert-danger" role="alert" style="top: 50%;">
+                 Ha ocurrido un error.
+             </div>-->
+            <div class="alert alert-danger" role="alert" style="top: 50%;" th:if="${error}">
+                <h6 class="alert-heading">Ops! Lo sentimos, parece que ha ocurrido un error.</h6>
+                <span th:text="${error}"></span>
+                <hr>
+                <p class="mb-0">Por favor, intentalo de nuevo más tarde.</p>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

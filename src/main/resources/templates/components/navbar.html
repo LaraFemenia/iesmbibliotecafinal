@@ -1,0 +1,23 @@
+<nav th:fragment="nav_bar" class="navbar navbar-expand-lg bg-dark" style="background:radial-gradient(circle,rgba(0,147,221,1)0%,rgba(152,234,247,1)100%);">
+    <img src="https://www.iesmb.edu.ar/bel/wp-content/uploads/2018/06/cropped-onlylogo-1.png" alt="" width="30" height="35">
+    <a class="navbar-brand ml-2" style="color:black;" th:href="@{/inicio}">Biblioteca IESMB</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" th:href="@{/inicio}">Inicio <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/crud}">Administrar</a>
+            </li>
+
+        </ul>
+        <form class="form-inline my-2 my-lg-0" th:action="@{/busqueda}">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="query">
+            <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Buscar</button>
+        </form>
+    </div>
+</nav>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <title>Detalle videojuego</title>
+</head>
+<body>
+<!--Navbar-->
+<nav th:replace="components/navbar :: nav_bar"></nav>
+
+<!--Detalle-->
+<div class="col-12 mt-3 ml-2">
+    <a th:href="@{/inicio}" class="badge badge-light"> < Volver </a>
+</div>
+<div class="container" style="background:#FFFFFF">
+    <div class="row" th:object="${libro}">
+        <div class="col-4">
+            <img th:src="*{'/imagenes/'} + ${libro.imagen}" alt="" class="img-fluid">
+        </div>
+        <div class="col-8" style="align-items: center;display: table;height: 200px">
+            <div class="card" style="text-align: center; background: #ffffff91;display: table-cell;vertical-align: middle;">
+                <h5 th:text="*{titulo}"></h5>
+                <p><span class="font-weight-bold">Sinopsis:</span> </br><span th:text="*{sinopsis}">1</span></p>
+                <p><span class="font-weight-bold">Edición:</span> <span th:text="*{edicion}">1</span></p>
+                <p th:if="*{cantidad}"> <span class="font-weight-bold">Cantidad:</span> <span th:text="*{cantidad}">1</span></p>
+                <p th:unless="*{cantidad}"> <span class="font-weight-bold">Cantidad:</span> <span class="text-danger">Agotado</span></p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+</body>
+</html>
